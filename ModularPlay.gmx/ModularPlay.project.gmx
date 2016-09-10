@@ -15,6 +15,7 @@
     <sprite>sprites\spr_background</sprite>
     <sprite>sprites\spr_test</sprite>
     <sprite>sprites\spr_demo_player</sprite>
+    <sprite>sprites\spr_mouse</sprite>
     <sprite>sprites\spr_rectangle</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -69,6 +70,9 @@
       <object>objects\obj_demo_controller</object>
       <object>objects\obj_demo_player</object>
       <object>objects\obj_demo_particle</object>
+    </objects>
+    <objects name="rm_dissolve">
+      <object>objects\obj_dissolve_particle</object>
     </objects>
   </objects>
   <rooms name="rooms">

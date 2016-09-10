@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>S_SLOPE_SLOW = 0.9;
+explodeSpd = 15;
+lastHostX = 0;
+lastHostY = 0;
 friction = 0.1;
 image_speed = 0;
 h_counter = 0;
@@ -52,6 +55,8 @@ if (x &gt; 300)
     isCore = true;
     controlScheme = global.controlScheme;
     global.controlScheme += 1;
+    Health = 30;
+    MaxHealth = 30;
     host = self;
     shape = "Circle";
     depth = -10;
@@ -96,7 +101,8 @@ maxWaveAmt = 80;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scr_sprite_explode(room_speed * 1.9, room_speed, 4, 2, width/4, width/6, 1, 0, 0, 0, 0, 0, 0);
+            <string>//scr_sprite_dissolve(image_angle, 2, 10, 1, 1, 0, 0, 0, 0, room_speed);
+//scr_sprite_explode(room_speed * 1.9, room_speed, 4, 2, width, width/3, 1, 0, 0, 0, 0, 0, 0);
 </string>
           </argument>
         </arguments>
@@ -228,8 +234,21 @@ if (!isCore)
     if (attached &amp;&amp; host != noone)
     {
         moved = true;
-        xSpd = ((host.x + positionX) - x) * .3;
-        ySpd = ((host.y + positionY) - y) * .3;
+        if (instance_exists(host))
+        {
+            xSpd = ((host.x + positionX) - x) * .3;
+            ySpd = ((host.y + positionY) - y) * .3;
+            lastHostX = host.x;
+            lastHostY = host.y;
+        }
+        else
+        {
+            host = noone;
+            attached = false;
+            var dir = point_direction(x, y, lastHostX, lastHostY) - 180;
+            xSpd = lengthdir_x(explodeSpd, dir);
+            ySpd = lengthdir_y(explodeSpd, dir);
+        }
     }
     if (grabbed)
     {
@@ -284,7 +303,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>if (shape != "Triangle")
+    draw_self();
 draw_set_alpha(1 * Health/MaxHealth);
 draw_set_colour(outlineColor);
 drawOutline();

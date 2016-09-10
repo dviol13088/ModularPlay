@@ -226,14 +226,14 @@
     <option_hasloadimage>false</option_hasloadimage>
     <option_helpkey>true</option_helpkey>
     <option_html5_CreationEventOrder>true</option_html5_CreationEventOrder>
-    <option_html5_WebGL>2</option_html5_WebGL>
+    <option_html5_WebGL>1</option_html5_WebGL>
     <option_html5_advertising_enable>0</option_html5_advertising_enable>
     <option_html5_advertising_key></option_html5_advertising_key>
     <option_html5_advertising_type>Supersonic Ads</option_html5_advertising_type>
     <option_html5_allow_fullscreen>True</option_html5_allow_fullscreen>
     <option_html5_alwaysreload>False</option_html5_alwaysreload>
-    <option_html5_browser_title>Created with GameMaker: Studio</option_html5_browser_title>
-    <option_html5_centergame>False</option_html5_centergame>
+    <option_html5_browser_title>Modular Play</option_html5_browser_title>
+    <option_html5_centergame>True</option_html5_centergame>
     <option_html5_facebook_app_display_name></option_html5_facebook_app_display_name>
     <option_html5_facebook_appid></option_html5_facebook_appid>
     <option_html5_facebook_enable>0</option_html5_facebook_enable>
@@ -248,13 +248,13 @@
     <option_html5_interpolate>-1</option_html5_interpolate>
     <option_html5_jsprepend></option_html5_jsprepend>
     <option_html5_loadingbar>-1</option_html5_loadingbar>
-    <option_html5_localrunalert>True</option_html5_localrunalert>
+    <option_html5_localrunalert>False</option_html5_localrunalert>
     <option_html5_outputdebugtoconsole>True</option_html5_outputdebugtoconsole>
     <option_html5_outputname>index.html</option_html5_outputname>
     <option_html5_scale>-1</option_html5_scale>
-    <option_html5_showcursor>True</option_html5_showcursor>
+    <option_html5_showcursor>False</option_html5_showcursor>
     <option_html5_splash_png>Configs\Default\html5\splash.png</option_html5_splash_png>
-    <option_html5_texture_page>2048</option_html5_texture_page>
+    <option_html5_texture_page>4096</option_html5_texture_page>
     <option_html5_use_test_ads>0</option_html5_use_test_ads>
     <option_html5_usebuiltinparticles>True</option_html5_usebuiltinparticles>
     <option_html5_usesplash>False</option_html5_usesplash>
@@ -359,7 +359,7 @@
     <option_mac_output_dir>~/GameMaker-Studio/ModularPlay</option_mac_output_dir>
     <option_mac_scale>-1</option_mac_scale>
     <option_mac_screenkey>-1</option_mac_screenkey>
-    <option_mac_showcursor>-1</option_mac_showcursor>
+    <option_mac_showcursor>0</option_mac_showcursor>
     <option_mac_signing_identity>Developer ID Application:</option_mac_signing_identity>
     <option_mac_sizeable>0</option_mac_sizeable>
     <option_mac_splash_png>Configs\Default\mac\splash.png</option_mac_splash_png>
@@ -416,7 +416,7 @@
     <option_screenkey>True</option_screenkey>
     <option_screenshotkey>true</option_screenshotkey>
     <option_shortcircuit>True</option_shortcircuit>
-    <option_showcursor>True</option_showcursor>
+    <option_showcursor>False</option_showcursor>
     <option_showprogress>1</option_showprogress>
     <option_sizeable>False</option_sizeable>
     <option_stayontop>false</option_stayontop>
@@ -536,7 +536,7 @@
     <option_winUAP_splash_background_colour>#000000</option_winUAP_splash_background_colour>
     <option_winUAP_splash_png>Configs\Default\WindowsUAP\SplashScreen.scale-100.png</option_winUAP_splash_png>
     <option_winUAP_store_logo>Configs\Default\WindowsUAP\logos\StoreLogo.scale-100.png</option_winUAP_store_logo>
-    <option_winUAP_texture_page>1024</option_winUAP_texture_page>
+    <option_winUAP_texture_page>2048</option_winUAP_texture_page>
     <option_winUAP_wide_logo>Configs\Default\WindowsUAP\logos\WideLogo.scale-100.png</option_winUAP_wide_logo>
     <option_windowcolor>clBlack</option_windowcolor>
     <option_windows_alternate_sync_method>False</option_windows_alternate_sync_method>

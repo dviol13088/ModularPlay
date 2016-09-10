@@ -31,6 +31,7 @@ angle = 0;
 shape = "Triangle";
 shootWait = true;
 shootWaitTime = room_speed/8;
+wiggleRoom = room_speed/15;
 setIndex();
 
 
