@@ -10,6 +10,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_block</sprite>
+    <sprite>sprites\spr_bullet</sprite>
+    <sprite>sprites\spr_background</sprite>
     <sprite>sprites\spr_test</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -20,11 +22,14 @@
     <script>scripts\hostLose.gml</script>
     <script>scripts\drawBody.gml</script>
     <script>scripts\collision_circle_list.gml</script>
+    <script>scripts\canShoot.gml</script>
     <script>scripts\hostAttach.gml</script>
+    <script>scripts\shoot.gml</script>
     <script>scripts\checkHost.gml</script>
     <script>scripts\setIndex.gml</script>
     <script>scripts\moveCore.gml</script>
     <script>scripts\approach.gml</script>
+    <script>scripts\damagePiece.gml</script>
     <script>scripts\checkBelow.gml</script>
   </scripts>
   <shaders name="shaders">
@@ -50,7 +55,9 @@
       <object>objects\obj_controller_ripple</object>
     </objects>
     <object>objects\obj_solid</object>
+    <object>objects\obj_bullet</object>
     <object>objects\obj_jumpthru</object>
+    <object>objects\obj_gun</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

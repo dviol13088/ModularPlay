@@ -61,5 +61,7 @@ else
     pieceAttached.positionY = newY;
 }
 pieceAttached.host = host;
+pieceAttached.Health += pieceAttached.AttachHealth;
+pieceAttached.Health = clamp(pieceAttached.Health, 0, pieceAttached.MaxHealth);
 pieceAttached.attached = true;
 pieceAttached.outside = true;

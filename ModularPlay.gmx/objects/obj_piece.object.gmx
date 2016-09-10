@@ -30,10 +30,14 @@ image_speed = 0;
 h_counter = 0;
 v_counter = 0;
 on_ground = false;
+Health = 10;
+AttachHealth = 10;
+RemoveHealth = 10;
+MaxHealth = 20;
 xSpd = 0;
 ySpd = 0;
 outside = true;
-shape = "Circle";
+shape = "Square";
 setIndex();
 spd = 3;
 checkBuffer = 5;
@@ -42,7 +46,11 @@ defaultScale = scale;
 clickScale = .3;
 con = obj_controller_ripple;
 if (x &gt; 300)
+{
     isCore = true;
+    shape = "Circle";
+    depth = -10;
+}
 else
     isCore = false;
 attached = false;
@@ -185,7 +193,7 @@ if (collide)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>scale = Health/MaxHealth;
 //isCore = keyboard_check(vk_space);
 if (!isCore)
 {
@@ -250,7 +258,7 @@ else
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_set_alpha(1);
+draw_set_alpha(1 * Health/MaxHealth);
 draw_set_colour(outlineColor);
 drawOutline();
 shader_set(shd_ripple);
@@ -265,7 +273,7 @@ drawBody();
 shader_reset();
 draw_set_alpha(0.7);
 //draw_circle_colour(x,y, clampRadius, COLOR_AQUA_LIGHT, COLOR_RED_DARK, false);
-draw_text(x, y - 45, outside);
+draw_text(x, y - 45, Health);
 </string>
           </argument>
         </arguments>
