@@ -1,17 +1,21 @@
 obj = argument0;
 bullet = argument1;
-obj.Health -= bullet.damage;
+if (obj.host != bullet.boss.host || !obj.attached)
+    obj.Health -= bullet.damage;
 obj.xSpd += lengthdir_x(bullet.speed, bullet.direction) * .3;
 obj.ySpd += lengthdir_y(bullet.speed, bullet.direction) * .3;
-if (obj.health <= 0)
+if (obj.Health <= 0)
 {
-    with (obj)
+    if (obj.host != noone && obj.attached)
     {
-        if (obj.host != noone && obj.attached)
-        {
-            obj.host = noone;
-            obj.xSpd += lengthdir_x(bullet.speed, bullet.direction);
-            obj.ySpd += lengthdir_y(bullet.speed, bullet.direction);
-        }
+        obj.attached = false;
+        obj.Health = obj.RemoveHealth;
+        obj.xSpd += lengthdir_x(bullet.speed, bullet.direction);
+        obj.ySpd += lengthdir_y(bullet.speed, bullet.direction);
+    }
+    else
+    {
+        with (obj)
+            instance_destroy();
     }
 }

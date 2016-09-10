@@ -80,9 +80,12 @@ setIndex();
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (attached &amp;&amp; host != noone)
+if (attached &amp;&amp; host != noone) || isCore
 {
-    angle = point_direction(x, y, host.x, host.y);
+    if (host!= noone &amp;&amp; host!= self)
+        angle = point_direction(x, y, host.x, host.y);
+    else
+        angle = point_direction(x, y, mouse_x, mouse_y) - 180;
     image_angle = angle + 90;
     if (canShoot())
     {

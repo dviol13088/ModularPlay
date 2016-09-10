@@ -6,6 +6,7 @@
   <NewExtensions>
     <extension index="0">extensions\FlatColors</extension>
     <extension index="1">extensions\Free Shaders</extension>
+    <extension index="2">extensions\Sprite Exploder</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -13,6 +14,8 @@
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_background</sprite>
     <sprite>sprites\spr_test</sprite>
+    <sprite>sprites\spr_demo_player</sprite>
+    <sprite>sprites\spr_rectangle</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -31,6 +34,10 @@
     <script>scripts\approach.gml</script>
     <script>scripts\damagePiece.gml</script>
     <script>scripts\checkBelow.gml</script>
+    <script>scripts\scr_sprite_explode.gml</script>
+    <script>scripts\scr_sprite_dissolve.gml</script>
+    <script>scripts\scr_sprite_radial.gml</script>
+    <script>scripts\scr_sprite_asymble.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_greyscale.shader</shader>
@@ -58,6 +65,11 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_jumpthru</object>
     <object>objects\obj_gun</object>
+    <objects name="rm_explosion">
+      <object>objects\obj_demo_controller</object>
+      <object>objects\obj_demo_player</object>
+      <object>objects\obj_demo_particle</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
