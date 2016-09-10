@@ -1,10 +1,10 @@
 switch(shape)
 {
     case "Circle":
-        draw_circle(x, y, (height/2 + buffer), false);
+        draw_circle(x, y, (height/2 + buffer) * maxScale, false);
     break;
     case "Square":
-        draw_rectangle(x - (height/2 + buffer/2),  y - (height/2 + buffer/2), x + (height/2 + buffer/2), y +(height/2 + buffer/2), false);
+        draw_rectangle(x - (height/2 + buffer/2) * maxScale,  y - (height/2 + buffer/2) * maxScale, x + (height/2 + buffer/2) * maxScale, y +(height/2 + buffer/2) * maxScale, false);
     break;
     case "Triangle":
         draw_sprite_ext(spr_background, 0, x, y, image_xscale, image_yscale, image_angle, c_white, draw_get_alpha());

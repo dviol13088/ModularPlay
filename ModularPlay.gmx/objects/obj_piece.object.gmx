@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>S_SLOPE_SLOW = 0.9;
+            <string>maxScale = 1;
+S_SLOPE_SLOW = 0.9;
 explodeSpd = 15;
 lastHostX = 0;
 lastHostY = 0;
@@ -226,7 +227,7 @@ if (collide)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scale = Health/MaxHealth;
+            <string>scale = maxScale * (Health/MaxHealth);
 //isCore = keyboard_check(vk_space);
 if (!isCore)
 {

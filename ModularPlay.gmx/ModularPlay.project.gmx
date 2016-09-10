@@ -21,24 +21,32 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\drawOutline.gml</script>
-    <script>scripts\inShape.gml</script>
-    <script>scripts\hostLose.gml</script>
-    <script>scripts\drawBody.gml</script>
-    <script>scripts\collision_circle_list.gml</script>
-    <script>scripts\canShoot.gml</script>
-    <script>scripts\hostAttach.gml</script>
-    <script>scripts\shoot.gml</script>
-    <script>scripts\checkHost.gml</script>
-    <script>scripts\setIndex.gml</script>
-    <script>scripts\moveCore.gml</script>
-    <script>scripts\approach.gml</script>
-    <script>scripts\damagePiece.gml</script>
-    <script>scripts\checkBelow.gml</script>
-    <script>scripts\scr_sprite_explode.gml</script>
-    <script>scripts\scr_sprite_dissolve.gml</script>
-    <script>scripts\scr_sprite_radial.gml</script>
-    <script>scripts\scr_sprite_asymble.gml</script>
+    <scripts name="Draw/Calculate Pieces">
+      <script>scripts\drawOutline.gml</script>
+      <script>scripts\drawBody.gml</script>
+      <script>scripts\inShape.gml</script>
+      <script>scripts\setIndex.gml</script>
+    </scripts>
+    <scripts name="Movement">
+      <script>scripts\moveCore.gml</script>
+      <script>scripts\approach.gml</script>
+      <script>scripts\checkBelow.gml</script>
+    </scripts>
+    <scripts name="Shooting">
+      <script>scripts\damagePiece.gml</script>
+      <script>scripts\shoot.gml</script>
+      <script>scripts\canShoot.gml</script>
+    </scripts>
+    <scripts name="Host Interaction">
+      <script>scripts\hostLose.gml</script>
+      <script>scripts\checkHost.gml</script>
+      <script>scripts\hostAttach.gml</script>
+    </scripts>
+    <scripts name="Other">
+      <script>scripts\collision_circle_list.gml</script>
+      <script>scripts\scr_sprite_explode.gml</script>
+      <script>scripts\suckPiece.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_greyscale.shader</shader>
@@ -59,21 +67,18 @@
   </shaders>
   <objects name="objects">
     <object>objects\obj_piece</object>
-    <objects name="Group_ripple">
+    <objects name="Control">
+      <object>objects\obj_demo_particle</object>
       <object>objects\obj_controller_ripple</object>
+    </objects>
+    <objects name="Pieces">
+      <object>objects\obj_gun</object>
+      <object>objects\obj_speedBoost</object>
+      <object>objects\obj_eater</object>
     </objects>
     <object>objects\obj_solid</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_jumpthru</object>
-    <object>objects\obj_gun</object>
-    <objects name="rm_explosion">
-      <object>objects\obj_demo_controller</object>
-      <object>objects\obj_demo_player</object>
-      <object>objects\obj_demo_particle</object>
-    </objects>
-    <objects name="rm_dissolve">
-      <object>objects\obj_dissolve_particle</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
