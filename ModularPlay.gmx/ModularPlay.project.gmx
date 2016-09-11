@@ -7,6 +7,7 @@
     <extension index="0">extensions\FlatColors</extension>
     <extension index="1">extensions\Free Shaders</extension>
     <extension index="2">extensions\Sprite Exploder</extension>
+    <extension index="3">extensions\Virtual Joysticks</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -47,6 +48,30 @@
       <script>scripts\scr_sprite_explode.gml</script>
       <script>scripts\suckPiece.gml</script>
     </scripts>
+    <scripts name="Virtual Joystick">
+      <script>scripts\vstick_set_frontsprite.gml</script>
+      <script>scripts\vstick_get_frontsprite.gml</script>
+      <script>scripts\vstick_set_backsprite.gml</script>
+      <script>scripts\vstick_get_backsprite.gml</script>
+      <script>scripts\vstick_get_active.gml</script>
+      <script>scripts\vstick_set_active.gml</script>
+      <script>scripts\vstick_set_radius.gml</script>
+      <script>scripts\vstick_get_radius.gml</script>
+      <script>scripts\vstick_set_y.gml</script>
+      <script>scripts\vstick_get_y.gml</script>
+      <script>scripts\vstick_set_x.gml</script>
+      <script>scripts\vstick_get_x.gml</script>
+      <script>scripts\vstick_get_yaxis.gml</script>
+      <script>scripts\vstick_get_xaxis.gml</script>
+      <script>scripts\vstick_get_direction.gml</script>
+      <script>scripts\vstick_get_deviation.gml</script>
+      <script>scripts\vstick_check.gml</script>
+      <script>scripts\vstick_check_pressed.gml</script>
+      <script>scripts\vstick_check_released.gml</script>
+      <script>scripts\vstick_draw.gml</script>
+      <script>scripts\vstick_step.gml</script>
+      <script>scripts\vstick_init.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_greyscale.shader</shader>
@@ -79,6 +104,7 @@
     <object>objects\obj_solid</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_jumpthru</object>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>

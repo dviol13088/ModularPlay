@@ -105,11 +105,21 @@ image_yscale = maxScale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (host != noone &amp;&amp; (other.host != host || (!other.attached &amp;&amp; !other.isCore)) &amp;&amp; canSuck)
+            <string>if !grabbed &amp;&amp; ((other.host != host || (!other.attached &amp;&amp; !other.isCore)) &amp;&amp; canSuck)
 {
     suckPiece(other, self);
-    positionX += lengthdir_x(1, point_direction(host.x, host.y, x, y));
-    positionY += lengthdir_y(1, point_direction(host.x, host.y, x, y));
+    if (host != noone)
+    {
+        dirX = host.x;
+        dirY = host.y;
+    }
+    else
+    {
+        dirX = other.x;
+        dirY = other.y;
+    }
+    positionX += lengthdir_x(1, point_direction(dirX, dirY, x, y));
+    positionY += lengthdir_y(1, point_direction(dirX, dirY, x, y));
 }
 </string>
           </argument>

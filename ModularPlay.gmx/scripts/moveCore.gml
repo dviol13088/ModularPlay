@@ -13,3 +13,10 @@ switch(controlScheme)
         ySpd = (keyboard_check(ord("K")) - keyboard_check(ord("I"))) * spd;
     break;
 }
+
+if (global.mobile && vstick_check(0))
+{
+    xSpd = clamp(vstick_get_xaxis(0) * spd * 1.1, -spd * 1.1, spd * 1.1);
+    ySpd = clamp(vstick_get_yaxis(0) * spd * 1.1, -spd * 1.1, spd * 1.1);
+}
+

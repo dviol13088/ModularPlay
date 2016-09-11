@@ -25,7 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = 2;
+            <string>global.mobile = false;
+if (os_type != os_windows &amp;&amp; os_type != os_macosx)
+{
+    global.mobile = true;
+    vstick_init(0, 100, 400, 50, true, noone, noone);
+    display_set_gui_size(clamp(display_get_width()/750 * 500, 200, 500), clamp(display_get_width()/750 * 500, 200, 500));
+    alarm[0] = 1;
+}
+//device_mouse_dbclick_enable(true);
+image_xscale = 2;
 image_yscale = 2;
 global.controlScheme = 0;
 draw_set_color(c_white);
@@ -55,6 +64,29 @@ full_screen_effect = false;
 
 surf = surface_create(view_wview, view_hview);
 view_surface_id[0] = surf;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>vstick_init(1, 400, 400, 50, 1, noone, noone);
 </string>
           </argument>
         </arguments>
@@ -102,7 +134,12 @@ global.mousePressing = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(ord('Q')) var_wave_amount += 1;
+            <string>if (global.mobile)
+{
+    vstick_step(0);
+    vstick_step(1);
+}
+if keyboard_check(ord('Q')) var_wave_amount += 1;
 if keyboard_check(ord('A')) var_wave_amount -= 1;
 
 if keyboard_check(ord('W')) var_wave_distortion += 1;
@@ -134,6 +171,12 @@ if keyboard_check(ord('D')) var_wave_speed -= 1;
             <kind>1</kind>
             <string>var_time_var+=0.04;
 draw_text(32, 32, fps_real);
+if (global.mobile)
+{
+    vstick_draw(0);
+    vstick_draw(1);
+}
+//draw_rectangle(view_xview[0], view_yview[0], view_xview[0] + view_wview[0], view_yview[0] + view_hview[0], false);
 /*
 var_mouse_pos_x = mouse_x - view_xview;
 var_mouse_pos_y = mouse_y - view_yview ;
@@ -296,52 +339,6 @@ p.shape = "Circle";
           <argument>
             <kind>1</kind>
             <string>game_end();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>shader_enabled = !shader_enabled;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="16">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>full_screen_effect = !full_screen_effect;
 </string>
           </argument>
         </arguments>
