@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>maxScale = 1;
+            <string>minMax = 0.1;
+maxMax = 4;
+wantsToShoot = false;
+grabbable = true;
+player = false;
+maxScale = 1;
 S_SLOPE_SLOW = 0.9;
 explodeSpd = 15;
 lastHostX = 0;
@@ -51,19 +56,7 @@ scale = .9;
 defaultScale = scale;
 clickScale = .3;
 con = obj_controller_ripple;
-if (x &gt; 300)
-{
-    isCore = true;
-    controlScheme = global.controlScheme;
-    global.controlScheme += 1;
-    Health = 30;
-    MaxHealth = 30;
-    host = self;
-    shape = "Circle";
-    depth = -10;
-}
-else
-    isCore = false;
+isCore = false;
 attached = false;
 grabbed = false;
 positionX = 0;
@@ -72,7 +65,7 @@ wiggle = 1.2;
 width = 32;
 height = 32;
 buffer = 4;
-bodyColor = COLOR_AQUA_LIGHT;
+bodyColor = COLOR_ORANGE_DARK;
 outlineColor = COLOR_GRAY_DARK;
 minWaveDistortion = height/3;
 maxWaveDistortion = height* 1.1;
@@ -205,6 +198,9 @@ repeat (abs(v))
 
 if (collide)
     event_perform( ev_other, ev_user1 );
+    
+x = clamp (x, -16, room_width + 16);
+y = clamp (y, -16, room_height + 16);
 </string>
           </argument>
         </arguments>
@@ -227,7 +223,8 @@ if (collide)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scale = maxScale * (Health/MaxHealth);
+            <string>maxScale = clamp(maxScale, minMax, maxMax);
+scale = maxScale * (Health/MaxHealth);
 //isCore = keyboard_check(vk_space);
 if (!isCore)
 {
@@ -259,10 +256,10 @@ if (!isCore)
         if(device_mouse_check_button_released(0, mb_left))
         {
             grabbed = false;
-            checkHost();
+            checkHost(false);
         }
     }
-    else if (device_mouse_check_button_pressed(0, mb_left) &amp;&amp; !global.mousePressing &amp;&amp; inShape() &amp;! grabbed)
+    else if (grabbable &amp;&amp; (device_mouse_check_button_pressed(0, mb_left) &amp;&amp; !global.mousePressing &amp;&amp; inShape() &amp;! grabbed))
     {
         global.mousePressing = true;
         if (host != noone)
@@ -307,7 +304,6 @@ else
             <string>if (shape != "Triangle")
     draw_self();
 draw_set_alpha(1 * Health/MaxHealth);
-draw_set_colour(outlineColor);
 drawOutline();
 shader_set(shd_ripple);
 shader_set_uniform_f(con.uni_time, con.var_time_var);
@@ -316,12 +312,11 @@ shader_set_uniform_f(con.uni_resolution, width, height);
 shader_set_uniform_f(con.uni_wave_amount, random_range(minWaveAmt, maxWaveAmt));
 shader_set_uniform_f(con.uni_wave_distortion, random_range(minWaveDistortion, maxWaveDistortion) );
 shader_set_uniform_f(con.uni_wave_speed, random_range(con.var_wave_speed-wiggle, con.var_wave_speed + wiggle));
-draw_set_colour(bodyColor);
 drawBody();
 shader_reset();
 draw_set_alpha(0.7);
 //draw_circle_colour(x,y, clampRadius, COLOR_AQUA_LIGHT, COLOR_RED_DARK, false);
-draw_text(x, y - 45, Health);
+draw_text(x, y - 45, player);
 </string>
           </argument>
         </arguments>

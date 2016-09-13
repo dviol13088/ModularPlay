@@ -1,3 +1,4 @@
+notPlayer = argument0;
 list = collision_circle_list(x, y, clampRadius, obj_piece, false, true);
 closestDist = clampRadius;
 closestObj = noone;
@@ -17,11 +18,21 @@ if (closestObj != noone)
 {
     if (closestObj.host == noone)
     {
-        hostAttach(closestObj, self, closestObj, true);
+        if (!notPlayer || !closestObj.player)
+        {
+            if (!closestObj.player)
+                grabbable = false;
+            hostAttach(closestObj, self, closestObj, true);
+        }
     }
     else
-    {
-        hostAttach(closestObj.host, self, closestObj, false);
-        closestObj.outside = false;
+    {        
+        if (!notPlayer || !closestObj.host.player)
+        {
+            if (!closestObj.host.player)
+                grabbable = false;
+            hostAttach(closestObj.host, self, closestObj, false);
+            closestObj.outside = false;
+        }
     }
 }

@@ -13,6 +13,7 @@ if (instance_exists(obj) && ((!instance_exists(bullet.boss)) || (obj.host != bul
         if (obj.host != noone && obj.attached)
         {
             obj.attached = false;
+            obj.grabbable = true;
             obj.Health = obj.RemoveHealth;
             obj.xSpd += lengthdir_x(bullet.speed, bullet.direction);
             obj.ySpd += lengthdir_y(bullet.speed, bullet.direction);

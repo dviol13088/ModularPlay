@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 shape = "Circle";
+bodyColor = COLOR_RED_LIGHT;
 MaxHealth = 20;
 TopHealth = 50;
 Health = 10;

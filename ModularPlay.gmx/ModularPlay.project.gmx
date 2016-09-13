@@ -30,6 +30,7 @@
     </scripts>
     <scripts name="Movement">
       <script>scripts\moveCore.gml</script>
+      <script>scripts\moveAI.gml</script>
       <script>scripts\approach.gml</script>
       <script>scripts\checkBelow.gml</script>
     </scripts>
@@ -72,6 +73,8 @@
       <script>scripts\vstick_step.gml</script>
       <script>scripts\vstick_init.gml</script>
     </scripts>
+    <script>scripts\createPieces.gml</script>
+    <script>scripts\createWalls.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_greyscale.shader</shader>

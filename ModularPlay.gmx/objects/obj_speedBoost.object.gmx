@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 maxScale = .5;
+bodyColor = COLOR_AQUA_LIGHT;
 shape = "Circle";
 Health = 5;
 AttachHealth = 5;
@@ -59,6 +60,7 @@ image_yscale = image_xscale;
             <string>event_inherited();
 if (attached &amp;&amp; host != noone) || isCore
 {
+    show_message(isCore);
     host.xSpd *= 1.1;
     host.ySpd *= 1.1;
 }

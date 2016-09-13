@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.mobile = false;
+            <string>createWalls();
+global.mobile = false;
 if (os_type != os_windows &amp;&amp; os_type != os_macosx)
 {
     global.mobile = true;
@@ -64,6 +65,16 @@ full_screen_effect = false;
 
 surf = surface_create(view_wview, view_hview);
 view_surface_id[0] = surf;
+
+minPieces = 50;
+maxPieces = 200;
+minCores = 5;
+maxCores = 25;
+pieceTypes = 4;
+buffer = 48;
+
+
+createPieces(minPieces, maxPieces, minCores, maxCores, pieceTypes, buffer, room_width-buffer, buffer, room_height-buffer);
 </string>
           </argument>
         </arguments>
