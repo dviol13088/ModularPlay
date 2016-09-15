@@ -27,11 +27,12 @@
             <kind>1</kind>
             <string>event_inherited();
 shape = "Circle";
-bodyColor = COLOR_RED_LIGHT;
+setIndex();
 MaxHealth = 20;
 TopHealth = 50;
 Health = 10;
 damage = 1;
+image_index = 1;
 suckTime = room_speed/4;
 canSuck = true;
 </string>
@@ -79,10 +80,10 @@ canSuck = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-maxScale = (Health/TopHealth) * 2;
-image_xscale = maxScale;
-image_yscale = maxScale;
+            <string>maxScale = (Health/TopHealth) * 1.4;
+event_inherited();
+image_xscale = maxScale + 1;
+image_yscale = maxScale + 1;
 
 </string>
           </argument>
@@ -111,8 +112,16 @@ image_yscale = maxScale;
     suckPiece(other, self);
     if (host != noone)
     {
-        dirX = host.x;
-        dirY = host.y;
+        if (!isCore &amp;&amp; instance_exists(host))
+        {
+            dirX = host.x;
+            dirY = host.y;
+        }
+        else
+        {
+            dirX = x;
+            dirY = y;
+        }
     }
     else
     {

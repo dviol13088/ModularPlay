@@ -25,8 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>minMax = 0.1;
+            <string>dir = 0;
+changeSpeedMin = room_speed/2;
+changeSpeedMax = room_speed * 3;
+playerDir = false;
+sightDist = 200;
+minMax = 0.4;
 maxMax = 4;
+wiggle = 1.2;
 wantsToShoot = false;
 grabbable = true;
 player = false;
@@ -55,23 +61,15 @@ host = noone;
 scale = .9;
 defaultScale = scale;
 clickScale = .3;
-con = obj_controller_ripple;
 isCore = false;
 attached = false;
 grabbed = false;
 positionX = 0;
 positionY = 0;
-wiggle = 1.2;
 width = 32;
 height = 32;
 buffer = 4;
-bodyColor = COLOR_ORANGE_DARK;
-outlineColor = COLOR_GRAY_DARK;
-minWaveDistortion = height/3;
-maxWaveDistortion = height* 1.1;
 clampRadius = height * 1.2;
-minWaveAmt = 20;
-maxWaveAmt = 80;
 
 </string>
           </argument>
@@ -97,6 +95,29 @@ maxWaveAmt = 80;
             <kind>1</kind>
             <string>//scr_sprite_dissolve(image_angle, 2, 10, 1, 1, 0, 0, 0, 0, room_speed);
 //scr_sprite_explode(room_speed * 1.9, room_speed, 4, 2, width, width/3, 1, 0, 0, 0, 0, 0, 0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dir = irandom(360);
 </string>
           </argument>
         </arguments>
@@ -225,6 +246,7 @@ y = clamp (y, -16, room_height + 16);
             <kind>1</kind>
             <string>maxScale = clamp(maxScale, minMax, maxMax);
 scale = maxScale * (Health/MaxHealth);
+scale = clamp(scale, minMax/2, maxMax);
 //isCore = keyboard_check(vk_space);
 if (!isCore)
 {
@@ -232,7 +254,7 @@ if (!isCore)
     if (attached &amp;&amp; host != noone)
     {
         moved = true;
-        if (instance_exists(host))
+        if (instance_exists(host) &amp;&amp; host.Health &gt; 0)
         {
             xSpd = ((host.x + positionX) - x) * .3;
             ySpd = ((host.y + positionY) - y) * .3;
@@ -301,22 +323,21 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (shape != "Triangle")
-    draw_self();
-draw_set_alpha(1 * Health/MaxHealth);
+            <string>//if (shape != "Triangle")
+//    draw_self();
+alpha = 0.2 + (Health/MaxHealth);
 drawOutline();
-shader_set(shd_ripple);
-shader_set_uniform_f(con.uni_time, con.var_time_var);
-shader_set_uniform_f(con.uni_mouse_pos, mouse_x, mouse_y);
-shader_set_uniform_f(con.uni_resolution, width, height);
-shader_set_uniform_f(con.uni_wave_amount, random_range(minWaveAmt, maxWaveAmt));
-shader_set_uniform_f(con.uni_wave_distortion, random_range(minWaveDistortion, maxWaveDistortion) );
-shader_set_uniform_f(con.uni_wave_speed, random_range(con.var_wave_speed-wiggle, con.var_wave_speed + wiggle));
 drawBody();
-shader_reset();
-draw_set_alpha(0.7);
+//draw_text(x, y - 45, string(inShape()) + "|" + string(grabbed) + "|" + string(grabbable) + "|" + string(global.mousePressing));
+
+//draw_set_alpha(0.7);
+//draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
 //draw_circle_colour(x,y, clampRadius, COLOR_AQUA_LIGHT, COLOR_RED_DARK, false);
-draw_text(x, y - 45, player);
+/*draw_text(x, y - 65, string(scale) + "|" + string(maxScale));/*
+if (isCore)
+{
+    draw_set_colour(COLOR_RED_LIGHT);
+}*/
 </string>
           </argument>
         </arguments>

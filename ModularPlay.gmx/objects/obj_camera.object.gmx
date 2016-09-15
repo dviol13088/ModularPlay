@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>viewScaleSpeed = 0.05;
-viewMoveSpeed = 0.05;
+viewMoveSpeed = 0.08;
 buffer = 250;
 maxBuffer = 400;
 minWidth = 500;
@@ -34,8 +34,8 @@ minHeight = 500;
 height = room_height;
 width = room_width;
 view_visible[view_current] = true;
-view_wport[view_current] = 500;
-view_hport[view_current] = 500;
+view_wport[view_current] = 800;
+view_hport[view_current] = 800;
 view_vspeed[view_current] = -1;
 view_hspeed[view_current] = -1;
 </string>
@@ -60,7 +60,7 @@ view_hspeed[view_current] = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xTot = 0;
+            <string>/*xTot = 0;
 yTot = 0;
 xMin = 0;
 xMax = 0;
@@ -100,21 +100,26 @@ if itemSum != 0
 {
     xAvg = xTot/itemSum;
     yAvg = yTot/itemSum;
+}*/
+if (instance_exists(global.player))
+{
+    xAvg = global.player.x;
+    yAvg = global.player.y;
 }
-mouseMaxX = view_wview[0]/3;
-mouseMaxY = view_hview[0]/3;
+mouseMaxX = view_wview[0]/2;
+mouseMaxY = view_hview[0]/2;
 mouseOffX = mouse_x - x;
 mouseOffX = clamp(mouseOffX, -mouseMaxX, mouseMaxX)
 mouseOffY = mouse_y - y;
 mouseOffY = clamp(mouseOffY, -mouseMaxY, mouseMaxY);
-if (global.mobile &amp;&amp; (!device_mouse_check_button(0, mb_left) || vstick_check(0) || vstick_check(1)))
+if (!keyboard_check(vk_lshift) || (global.mobile &amp;&amp; (!device_mouse_check_button(0, mb_left) || vstick_check(0) || vstick_check(1))))
 {
     mouseOffX = 0;
     mouseOffY = 0;
 }
 x =  lerp(x, xAvg + mouseOffX, viewMoveSpeed);
 y = lerp(y, yAvg + mouseOffY, viewMoveSpeed);
-width = (xMax - xMin) + buffer;
+/*width = (xMax - xMin) + buffer;
 height = (yMax - yMin) + buffer;
 //show_message_async(string(view_wview[view_current]) + "|" + string(clamp(lerp(view_wview[view_current], width, viewScaleSpeed), minWidth, room_width/2)));
 //if (((width * 9) / 16) &gt; height)
@@ -133,32 +138,6 @@ view_hborder[view_current] = view_wview[view_current]/2;
 view_vborder[view_current] = view_hview[view_current]/2;
 view_hborder[7] = view_wview[7]/2;
 view_vborder[7] = view_hview[7]/2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="74">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//draw_text(64, 64, string(view_current) + "|" + string(width) + "|" + string(view_xview[view_current]) + "|" + string(view_wview[view_current]));
-//draw_text(64, 96, string(view_current) + "|" + string(height) + "|" + string(view_yview[view_current]) + "|" + string(view_hview[view_current]));
-//show_message(view_yview[0]);
-//draw_rectangle(x - 5, y - 5, x + 5, y + 5, true);
 </string>
           </argument>
         </arguments>

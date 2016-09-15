@@ -81,11 +81,11 @@ setIndex();
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (attached &amp;&amp; host != noone) || isCore
+if (attached &amp;&amp; instance_exists(host)) || isCore
 {
-    if (host!= noone &amp;&amp; host!= self)
+    if (!isCore &amp;&amp; instance_exists(host))
         angle = point_direction(x, y, host.x, host.y);
-    else
+    else if (player)
     {
         if (global.mobile)
         {            
